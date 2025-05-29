@@ -118,6 +118,40 @@ audio {
   padding: 0.5em;
   font-size: 1em;
 }
+
+/* Horizontal swipeable collage */
+.final-content {
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.collage-scroll {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide native scrollbars */
+.collage-scroll::-webkit-scrollbar {
+  display: none;
+}
+.collage-scroll {
+  scrollbar-width: none;
+}
+
+.collage-scroll img {
+  flex: 0 0 auto;
+  width: 250px;      /* adjust as you like */
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 .error {
   color: #f88;
   margin-top: 0.5em;
