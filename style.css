@@ -17,6 +17,8 @@ body, html {
 
 .page {
   /* ensure each page is a snap point */
+  position: relative;     /* establish its own stacking context */
+  overflow: hidden;       /* hide anything that spills outside */
   scroll-snap-align: start;
   height: 100vh;
   display: flex;
@@ -47,6 +49,8 @@ body, html {
 }
 
 .page {
+  position: relative;     /* establish its own stacking context */
+  overflow: hidden;       /* hide anything that spills outside */
   height: 100vh;
   display: flex;
   justify-content: center;
