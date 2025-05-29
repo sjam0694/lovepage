@@ -49,38 +49,41 @@ These words, are so stuck in my head. Correlating to a dramatic dialogue from a 
       <img src="assets/img/collage5.jpg" />
       <img src="assets/img/collage6.jpg" />
     </div>
+    
 <!-- Hidden, looping audio with a clear id -->
-<audio id="finalAudio" loop hidden>
+    <audio id="finalAudio" loop hidden>
   <source src="assets/audio/song.mp3" type="audio/mpeg">
-  <!-- Fallback text -->
   Your browser does not support audio.
 </audio>
 
-    <script>
-  // Grab the audio element once
+<script>
+  // Grab the audio element
   const finalAudio = document.getElementById('finalAudio');
+  // Grab the final section
+  const finalSection = document.querySelector('.final');
 
-  // Define a one-time handler to start playback
-  function startAudio() {
-    if (finalAudio) {
-      finalAudio.play().catch(() => {
-        // in case the browser still blocks, you could show a tiny "Play" button here
-        console.warn('Autoplay was blocked; user interaction required.');
+  // Only proceed if both exist
+  if (finalAudio && finalSection) {
+    // Create an observer that watches when finalSection is ≥50% visible
+    const audioObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Play the audio once the section scrolls into view
+          finalAudio.play().catch(() => {
+            console.warn('Autoplay blocked. User interaction may be required.');
+          });
+          // Stop observing so this only fires once
+          audioObserver.unobserve(finalSection);
+        }
       });
-    }
-    // Remove both listeners so we only fire once
-    window.removeEventListener('scroll', startAudio);
-    window.removeEventListener('click', startAudio);
+    }, { threshold: 0.5 });
+
+    // Start observing
+    audioObserver.observe(finalSection);
   }
-
-  // Listen for either a scroll or click—whichever comes first
-  window.addEventListener('scroll', startAudio, { once: true });
-  window.addEventListener('click',  startAudio, { once: true });
 </script>
-
     
   </section>
-
   <script src="main.js"></script>
 </body>
 </html>
