@@ -49,18 +49,35 @@ These words, are so stuck in my head. Correlating to a dramatic dialogue from a 
       <img src="assets/img/collage5.jpg" />
       <img src="assets/img/collage6.jpg" />
     </div>
-<script>
-  document.addEventListener("click", function () {
-    const audio = document.getElementById("your-song.mp3");
-    if (audio) {
-      audio.play();
+<!-- Hidden, looping audio with a clear id -->
+<audio id="finalAudio" loop hidden>
+  <source src="assets/audio/song.mp3" type="audio/mpeg">
+  <!-- Fallback text -->
+  Your browser does not support audio.
+</audio>
+
+    <script>
+  // Grab the audio element once
+  const finalAudio = document.getElementById('finalAudio');
+
+  // Define a one-time handler to start playback
+  function startAudio() {
+    if (finalAudio) {
+      finalAudio.play().catch(() => {
+        // in case the browser still blocks, you could show a tiny "Play" button here
+        console.warn('Autoplay was blocked; user interaction required.');
+      });
     }
-  }, { once: true });
+    // Remove both listeners so we only fire once
+    window.removeEventListener('scroll', startAudio);
+    window.removeEventListener('click', startAudio);
+  }
+
+  // Listen for either a scroll or click—whichever comes first
+  window.addEventListener('scroll', startAudio, { once: true });
+  window.addEventListener('click',  startAudio, { once: true });
 </script>
 
-<audio id="your-song.mp3" loop hidden>
-  <source src="your-song.mp3" type="audio/mpeg">
-</audio>
     
   </section>
 
