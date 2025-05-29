@@ -49,6 +49,15 @@ These words, are so stuck in my head. Correlating to a dramatic dialogue from a 
       <img src="assets/img/collage5.jpg" />
       <img src="assets/img/collage6.jpg" />
     </div>
+<script>
+  document.addEventListener("click", function () {
+    const audio = document.getElementById("final-audio");
+    if (audio) {
+      audio.play();
+    }
+  }, { once: true });
+</script>
+    
 <audio autoplay loop hidden>
   <source src="your-song.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
