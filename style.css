@@ -1,3 +1,37 @@
+/* ─── Full-Page Scroll Snap Setup ─── */
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;       /* smooth animation */
+  overflow-y: scroll;            /* enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* snap to each child on the y-axis */
+}
+
+/* ─── Your existing styles below ─── */
+body, html {
+  /* you can remove any duplicate height/margin here,
+     but keep font-family/overflow-x etc. */
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.page {
+  /* ensure each page is a snap point */
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(120deg, #f6d365, #fda085);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* …the rest of your CSS (intro, final, collage, gate, etc.) unchanged… */
+
 body, html {
   margin: 0;
   padding: 0;
