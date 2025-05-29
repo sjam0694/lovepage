@@ -32,6 +32,13 @@ body, html {
 
 /* …the rest of your CSS (intro, final, collage, gate, etc.) unchanged… */
 
+/* ─── Paragraph Pages Background ─── */
+.page:not(.intro):not(.final) {
+  /* Remove the default gradient: */
+  background: #F7CAC9;  /* Blush Pink for pages 2–6 */
+}
+
+
 body, html {
   margin: 0;
   padding: 0;
